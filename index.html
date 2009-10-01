@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.suggest.js"></script>
+<link rel="stylesheet" href="css/suggest.css" type="text/css" />
+<script type="text/javascript">
+jQuery(function() {
+	jQuery("#suggest").suggest("suggest/search_result.php");
+});
+</script>
+<title>GoogleAnalyticsのAPIで検索キーワードを保持して、サジェストとしてそのキーワードを表示するサンプル</title>
+</head>
+<body>
+
+<h1>GoogleAnalyticsのAPIで検索キーワードを保持して、サジェストとしてそのキーワードを表示するサンプル</h1>
+
+<h2>サジェストさせる入力フォーム</h2>
+<form method="post" action="">
+
+<p>下記は検索時の入力フォームと仮定して、テキストフィールドに何か入力すると、その候補が表示されます。<br />
+例えば、「zen cart」とか「movable type」とか「ajax」とか、を入力すると表示されます。</p>
+
+<p><input type="text" size="30" name="search" id="suggest" value="" /> <input type="button" value="検索 (ダミー)" /></p>
+
+</form>
+
+</body>
+</html>

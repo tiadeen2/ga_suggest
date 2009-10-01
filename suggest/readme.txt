@@ -1,0 +1,75 @@
+ga_suggest ver.1.0
+=====================
+
+ga_suggest は、サイトを検索する際にユーザーが入力欄に文字入力をしたら、候補を表示するものです。
+
+候補として、Google Analyticsの『サイトへアクセスする際に検索エンジンで検索されたキーワード』をベースとして、結果を表示します。
+
+-----------------------------------------------------------------------------
+
+Copyright (c) 2009 ARK-Web Co., Ltd. http://www.ark-web.jp/
+License: GPL version 2.0.
+
+-----------------------------------------------------------------------------
+
+
+インストール方法
+=====================
+
+0.Backup!!!
+
+1.解凍したファイルをアップします
+
+2.DB(mysqlを想定)に、下記を実行します
+
+        CREATE TABLE IF NOT EXISTS `ga_keywords` (
+          `keyword` varchar(255) NOT NULL default '',
+          `count` int(11) NOT NULL default '0',
+          PRIMARY KEY  (`keyword`)
+        );
+
+3.サイトを検索する入力フォームがあるページに下記を記述します
+
+3-1.<head>の中に下記を記述します
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.suggest.js"></script>
+        <link rel="stylesheet" href="css/suggest.css" type="text/css" />
+        <script type="text/javascript">
+        jQuery(function() {
+          jQuery("#suggest").suggest("suggest/search_result.php");
+        });
+        </script>
+
+3-2.テキストフィールドに id="suggest" を指定します
+
+        <p><input type="text" size="30" name="search" id="suggest" value="" /> <input type="button" value="検索 (ダミー)" /></p>
+
+
+4.Google Analytics APIの設定
+
+4-1.環境の設定
+
+『サイトへアクセスする際に検索エンジンで検索されたキーワード』を取得にはGoogle Analytics APIへ接続する必要があります。
+suggest/environments.php の値を設定してください。
+
+4-2.データの取得
+
+次に実際にデータを取得します。下記のURLにアクセスしてください。
+
+http://yourdomain/.../suggest/make_keyword.php
+
+5.動作確認
+
+最後に、3-2で設定したテキストフィールドに、適当に入力してsuggestされるか確認してください。
+
+
+デモ環境
+=====================
+
+http://okra.ark-web.jp/~takemura/public/js/ga_suggest/
+
+
+変更履歴
+=====================
+2009-08-10 1.0 リリース(したい^^;)
